@@ -1,4 +1,4 @@
-# Ratios: Agentic AI Canadian Tax Assistant
+# Ratios AI: Agentic AI Canadian Tax Assistant
 
 Ratios is an agentic AI-powered Canadian income tax assistant designed to help users understand tax regulations, calculate income taxes, and explore tax-saving scenarios through natural language. The system combines AI agents, retrieval-augmented generation (RAG), and a deterministic Python tax calculator to provide accurate, explainable answers grounded in official Canadian government sources.
 
