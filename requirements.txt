@@ -1,7 +1,39 @@
+# Backend API
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
+pydantic-settings
 python-dotenv
-pytest
+python-multipart
+
+# AI Agents & Gemini
+google-genai
+langchain
+langgraph
+langchain-google-genai
+
+# RAG & Embeddings
+langchain-text-splitters
+pgvector
+numpy
+
+# PostgreSQL Database
+sqlalchemy
+psycopg[binary]
+alembic
+
+# Web Scraping
 httpx
 beautifulsoup4
+lxml
+playwright
+pymupdf
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+# Utilities
+tenacity
+python-dateutil
