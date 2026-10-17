@@ -37,3 +37,7 @@ pytest-cov
 # Utilities
 tenacity
 python-dateutil
+psycopg[binary]
+langchain
+langchain-google-genai
+

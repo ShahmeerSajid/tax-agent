@@ -1,4 +1,27 @@
 
+
+# What the calculator does: it takes an income and a province, and works out the tax. 
+# For each bracket, it taxes the slice of income inside that bracket at its rate, adds up the slices, and
+# does this for federal and provincial. It returns the totals plus the source links.
+
+# What it needs: the list of brackets for each jurisdiction. It doesn’t store them, so 
+# it has to be given them.
+
+# Where rules_db.py helps and how does it help the calculator.py:
+# Neon database ──► rules_db.py ──► calculator
+
+# The rules_db.py file reads the tax rules back out of the Neon database and returns them
+# in exactly the same shape as the JSON file. calculator.py needs rules_db.py
+
+# Example:
+# rules = load_rules_from_db()
+# calculate_tax(85000, "ON", rules)
+
+
+
+
+
+
 import json
 from pathlib import Path
 
