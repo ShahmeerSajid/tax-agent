@@ -45,7 +45,7 @@ The calculator performs tax computations deterministically rather than relying o
 | AI orchestration | Google Gemini API, function calling, custom agent execution loops |
 | RAG | Gemini Embeddings, PostgreSQL, pgvector |
 | Database | Neon PostgreSQL |
-| Data ingestion | HTTPX, BeautifulSoup, Playwright |
+| Data ingestion | HTTPX, BeautifulSoup, Selenium, Playwright |
 | Data validation | Pydantic, JSON schemas |
 | Testing | Pytest, calculator unit tests |
 | Automation | GitHub Actions, scheduled workflows |
