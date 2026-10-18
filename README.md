@@ -1,4 +1,4 @@
-# Taxora: Your AI Copilot for Canadian Tax Systems 🇨🇦
+# Taxora: Your AI Copilot for Canadian Tax Planning 🇨🇦
 
 Currently in progress …
 
