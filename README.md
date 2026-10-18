@@ -1,14 +1,14 @@
-# Ratios AI: Full-Stack Agentic AI Canadian Tax Assistant
+# TaxPilot: Making Canadian Taxes Smarter with AI
 
-Ratios AI is a full-stack, Agentic AI-powered Canadian tax assistant designed to help users understand, calculate, and optimize their federal and provincial income taxes through natural-language conversations. Built using Next.js, React, TypeScript, Python, FastAPI, LangChain, Google Gemini, and Neon PostgreSQL, Ratios uses an intelligent AI agent that selects and executes specialized Python tools for income tax calculations, RRSP and TFSA analysis, capital gains, payroll deductions, and tax scenario comparisons. 
+TaxPilot is a full-stack, Agentic AI-powered Canadian tax assistant designed to help users understand, calculate, and optimize their federal and provincial income taxes through natural-language conversations. Built using Next.js, React, TypeScript, Python, FastAPI, LangChain, Google Gemini, and Neon PostgreSQL, Ratios uses an intelligent AI agent that selects and executes specialized Python tools for income tax calculations, RRSP and TFSA analysis, capital gains, payroll deductions, and tax scenario comparisons. 
 
 The system also incorporates Retrieval-Augmented Generation (RAG), using vector embeddings and PostgreSQL's pgvector extension to retrieve relevant information from official Canadian tax documents and generate answers supported by reliable sources. 
 
-Rather than relying on AI-generated calculations, Ratios uses deterministic Python functions and verified government tax rules to ensure numerical accuracy. The architecture also includes automated data ingestion and verification agents designed to collect, validate, and maintain up-to-date tax information, with human approval before new rules enter production. By combining agentic AI, RAG, reliable tax calculations, and source verification, Ratios aims to make Canadian taxation more accessible, transparent, and easier to understand.
+Rather than relying on AI-generated calculations, TaxPilot uses deterministic Python functions and verified government tax rules to ensure numerical accuracy. The architecture also includes automated data ingestion and verification agents designed to collect, validate, and maintain up-to-date tax information, with human approval before new rules enter production. By combining agentic AI, RAG, reliable tax calculations, and source verification, Ratios aims to make Canadian taxation more accessible, transparent, and easier to understand.
 
 ## System Architecture
 
-Ratios is organized into three AI agents and a deterministic Python tax engine.
+TaxPilot is organized into three AI agents and a deterministic Python tax engine.
 
 ### 1. Tax Rule Ingestion Agent
 
@@ -72,5 +72,5 @@ The frontend sends user queries to FastAPI through HTTP requests. FastAPI commun
 
 ## Design Principles
 
-Ratios separates probabilistic AI reasoning from deterministic tax computation. AI agents handle information extraction, verification support, semantic retrieval, and tool orchestration, while Python functions execute calculations against approved, versioned tax rules. Human-in-the-loop verification, source attribution, automated testing, and scheduled data updates are incorporated to improve reliability and maintainability.
+TaxPilot separates probabilistic AI reasoning from deterministic tax computation. AI agents handle information extraction, verification support, semantic retrieval, and tool orchestration, while Python functions execute calculations against approved, versioned tax rules. Human-in-the-loop verification, source attribution, automated testing, and scheduled data updates are incorporated to improve reliability and maintainability.
 
