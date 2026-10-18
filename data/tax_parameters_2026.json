@@ -1,0 +1,87 @@
+{
+  "tax_year": 2026,
+  "note": "Only values read from official Government of Canada pages are stored here. Each section lists the pages it came from.",
+  "rrsp": {
+    "earned_income_rate": 0.18,
+    "dollar_limit_by_year": {
+      "2024": 31560,
+      "2025": 32490,
+      "2026": 33810,
+      "2027": 35390
+    },
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/services/tax/registered-plans-administrators/pspa/mp-rrsp-dpsp-tfsa-limits-ympe.html",
+      "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/rrsps-related-plans/contributing-a-rrsp-prpp/contributions-affect-your-rrsp-prpp-deduction-limit.html"
+    ]
+  },
+  "tfsa": {
+    "first_year": 2009,
+    "annual_limit_by_year": {
+      "2009": 5000,
+      "2010": 5000,
+      "2011": 5000,
+      "2012": 5000,
+      "2013": 5500,
+      "2014": 5500,
+      "2015": 10000,
+      "2016": 5500,
+      "2017": 5500,
+      "2018": 5500,
+      "2019": 6000,
+      "2020": 6000,
+      "2021": 6000,
+      "2022": 6000,
+      "2023": 6500,
+      "2024": 7000,
+      "2025": 7000,
+      "2026": 7000
+    },
+    "tax_treatment": {
+      "income_and_gains": "Income earned in a TFSA through interest, dividends or capital gains is generally tax-free, even when you make a withdrawal.",
+      "withdrawals": "Funds can be withdrawn tax-free at any time.",
+      "contributions": "Contributions are not tax deductible.",
+      "over_contributions": "Contributing more than your available room is taxed. The CRA page does not give the penalty amount, so none is stored.",
+      "trading_as_a_business": "Trading with the frequency and experience of a professional trader may lead to the account being deregistered and the income taxed as business income."
+    },
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/services/tax/registered-plans-administrators/pspa/mp-rrsp-dpsp-tfsa-limits-ympe.html",
+      "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/what.html"
+    ]
+  },
+  "cpp": {
+    "basic_exemption": 3500,
+    "ympe": 74600,
+    "yampe": 85000,
+    "employee_rate": 0.0595,
+    "employee_max": 4230.45,
+    "self_employed_rate": 0.119,
+    "self_employed_max": 8460.9,
+    "cpp2_employee_rate": 0.04,
+    "cpp2_employee_max": 416.0,
+    "cpp2_self_employed_rate": 0.08,
+    "cpp2_self_employed_max": 832.0,
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums-exemptions.html",
+      "https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"
+    ]
+  },
+  "ei": {
+    "max_insurable_earnings": 68900,
+    "rate_outside_quebec": 0.0163,
+    "rate_quebec": 0.013,
+    "max_premium_outside_quebec": 1123.07,
+    "max_premium_quebec": 895.7,
+    "employer_multiplier": 1.4,
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/employment-insurance-ei/ei-premium-rates-maximums.html"
+    ]
+  },
+  "capital_gains": {
+    "inclusion_rate": 0.5,
+    "note": "The CRA states that gains realized before 2026 use the enacted one-half inclusion rate, and the Prime Minister's office announced on 2025-03-21 that the proposed increase is cancelled. Confirm the current rate with the CRA before relying on it for a filing.",
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/news/newsroom/tax-tips/tax-tips-2025/update-cra-administration-proposed-capital-gains-taxation-changes.html",
+      "https://www.pm.gc.ca/en/news/news-releases/2025/03/21/prime-minister-mark-carney-cancels-proposed-capital-gains-tax-increase"
+    ]
+  }
+}
