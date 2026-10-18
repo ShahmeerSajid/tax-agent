@@ -1,6 +1,6 @@
-# TaxPilot: Your AI Copilot for Canadian Tax Systems 🇨🇦
+# Taxora: Your AI Copilot for Canadian Tax Systems 🇨🇦
 
-TaxPilot is a full-stack, Agentic AI-powered Canadian tax platform designed to help users understand, calculate, and optimize their federal and provincial income taxes through natural-language conversations. Built using Next.js, React, TypeScript, Python, FastAPI, LangChain, Google Gemini, and Neon PostgreSQL, Ratios uses an intelligent AI agent that selects and executes specialized Python tools for income tax calculations, RRSP and TFSA analysis, capital gains, payroll deductions, and tax scenario comparisons. 
+Taxora is a full-stack, Agentic AI-powered Canadian tax platform designed to help users understand, calculate, and optimize their federal and provincial income taxes through natural-language conversations. Built using Next.js, React, TypeScript, Python, FastAPI, LangChain, Google Gemini, and Neon PostgreSQL, Ratios uses an intelligent AI agent that selects and executes specialized Python tools for income tax calculations, RRSP and TFSA analysis, capital gains, payroll deductions, and tax scenario comparisons. 
 
 The system also incorporates Retrieval-Augmented Generation (RAG), using vector embeddings and PostgreSQL's pgvector extension to retrieve relevant information from official Canadian tax documents and generate answers supported by reliable sources. 
 
