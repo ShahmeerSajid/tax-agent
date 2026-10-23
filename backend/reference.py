@@ -39,6 +39,13 @@ def _stored_sources():
     for topic in TOPICS:
         for url in params[topic]["source_urls"]:
             labels.setdefault(_normalize(url), []).append(f"parameters:{topic}")
+    from backend.credits import load_credits
+
+    credits = load_credits()
+    for url in credits["federal"]["source_urls"]:
+        labels.setdefault(_normalize(url), []).append("credits:federal")
+    for code, entry in credits["provinces"].items():
+        labels.setdefault(_normalize(entry["source_url"]), []).append(f"credits:{code}")
     return labels
 
 

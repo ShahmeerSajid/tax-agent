@@ -62,7 +62,7 @@ from our files). The tools are grouped into lists (LOOKUP_TOOLS, CORE_TAX_TOOLS,
 WHAT_IF_TOOLS, SAVINGS_TOOLS, INCOME_TOOLS, TAX_YEAR_TOOLS) and joined in
 ALL_TOOLS, which the agent imports; to add a tool later, write the logic in a
 module, add a small @tool wrapper here, and append it to one group. Features
-that cannot be built honestly yet (tax credits, refund estimates, QPP and QPIP,
+that cannot be built honestly yet (credits other than the basic personal amount, refund estimates, QPP and QPIP,
 document search with RAG, prior-year rules) are not faked: they are listed by
 get_calculator_limitations as missing dependencies.
 """
@@ -71,14 +71,9 @@ get_calculator_limitations as missing dependencies.
 
 from langchain.tools import tool
 
-from backend import core_tax, payroll, reference, savings_accounts, tax_years
+from backend import core_tax, credits, payroll, reference, savings_accounts, tax_years
 from backend.capital_gains import capital_gains_tax
 from backend.scenarios import Scenario, simulate_scenarios
-
-
-
-
-
 
 
 def _run(function, *args):
@@ -86,7 +81,6 @@ def _run(function, *args):
         return function(*args)
     except ValueError as error:
         return {"error": str(error)}
-
 
 
 
@@ -107,7 +101,6 @@ def list_jurisdictions() -> dict:
     Limits: only the tax year loaded in the rules (2026).
     Instructions: do not list jurisdictions from memory."""
     return _run(core_tax.list_jurisdictions)
-
 
 
 
@@ -153,7 +146,7 @@ def get_calculator_limitations() -> dict:
     """Return what the assistant's tools include and what they do NOT include.
 
     Purpose: gives the honest list of known gaps and missing dependencies, such
-    as tax credits, the basic personal amount, refund estimates, QPP and QPIP,
+    as other tax credits, refund estimates, QPP and QPIP,
     the Ontario surtax, the Quebec abatement, prior years and document search.
     Use when: the user asks how accurate a result is, whether it is their real
     tax bill, or asks for something that may not be supported.
@@ -231,6 +224,24 @@ def calculate_income_tax(income: float, province: str) -> dict:
 
 
 
+
+
+@tool
+def calculate_tax_after_basic_personal_credit(income: float, province: str) -> dict:
+    """Calculate 2026 federal plus provincial tax after the basic personal amount credit.
+
+    Purpose: takes the bracket tax and subtracts the basic personal amount (BPA)
+    credit (BPA times the lowest bracket rate), federal and provincial, never
+    below zero. The federal BPA shrinks for high incomes; Yukon follows it.
+    Use when: the user wants tax closer to the real amount owed, or asks about
+    the basic personal amount or credits.
+    Inputs: income (taxable income in dollars), province (code, name or city).
+    Returns: result_type "calculation" with before/after tax, the BPA used and
+    the credit for each level, incomplete and missing, notes and sources.
+    Instructions: if incomplete is true (Newfoundland and Labrador, Quebec,
+    Manitoba above 200,000), say the provincial credit was not applied. Say
+    other credits, the Ontario surtax and Health Premium are not included."""
+    return _run(credits.tax_after_basic_personal_credit, income, province)
 
 
 @tool
@@ -534,9 +545,6 @@ def calculate_rrsp_contribution_tax_savings(
     )
 
 
-
-
-
 @tool
 def calculate_tfsa_contribution_room(
     first_eligible_year: int,
@@ -687,6 +695,7 @@ LOOKUP_TOOLS = [
 
 CORE_TAX_TOOLS = [
     calculate_income_tax,
+    calculate_tax_after_basic_personal_credit,
     get_tax_breakdown_by_bracket,
     get_tax_rates,
     get_next_bracket_threshold,

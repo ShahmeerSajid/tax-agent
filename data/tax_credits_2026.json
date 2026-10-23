@@ -1,0 +1,30 @@
+{
+  "tax_year": 2026,
+  "note": "Basic personal amounts (BPA) for 2026 read from CRA payroll formula pages T4127 and the T4032 general-information pages. The credit is the BPA times the lowest bracket rate of that jurisdiction. The lowest rate is read from tax_rules_2026.json. Alberta's credit rate (8%) was confirmed in T4127; for the other provinces it is assumed to equal the lowest bracket rate. Confirm with CRA T4127 before relying on it.",
+  "federal": {
+    "bpa_max": 16452,
+    "bpa_min": 14829,
+    "phase_start_net_income": 181440,
+    "phase_end_net_income": 258482,
+    "source_urls": [
+      "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html"
+    ]
+  },
+  "provinces": {
+    "ON": {"bpa": 12989, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032on-jan/t4032on-january-general-information.html"},
+    "AB": {"bpa": 22769, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032ab-jan/t4032ab-january-general-information.html"},
+    "BC": {"bpa": 13216, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032bc-july/t4032bc-july-general-information.html"},
+    "SK": {"bpa": 20381, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032sk-jan/t4032sk-january-general-information.html"},
+    "NS": {"bpa": 11932, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032ns-jan/t4032ns-january-general-information.html"},
+    "NB": {"bpa": 13664, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032nb-jan/t4032nb-january-general-information.html"},
+    "NT": {"bpa": 18198, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032nt-jan/t4032nt-january-general-information.html"},
+    "NU": {"bpa": 19659, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032nu-jan/t4032nu-january-general-information.html"},
+    "PE": {"bpa": 15000, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032pe-july/t4032pe-july-general-information.html"},
+    "YT": {"follows_federal_formula": true, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032yt-jan/t4032yt-january-general-information.html"},
+    "MB": {"bpa": 15780, "reduced_to_zero_between": [200000, 400000], "applied_up_to_net_income": 200000, "source_url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032mb-jan/t4032mb-january-general-information.html"}
+  },
+  "not_available": {
+    "NL": "The annual 2026 BPA is unclear: 13,094 announced on January 1, but the payroll page uses a prorated 15,000 for the last six months.",
+    "QC": "Quebec has its own credit system and a federal abatement that are not modelled."
+  }
+}

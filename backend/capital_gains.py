@@ -1,3 +1,4 @@
+
 """
 This file calculates the income tax on capital gains. In Canada only part of a
 capital gain (the inclusion rate) is added to taxable income, so the extra tax
@@ -6,6 +7,7 @@ taxable portion and the tax on the other income alone, both computed with the
 same federal and provincial bracket calculator used everywhere else. Capital
 losses in the same year are subtracted from the gains first. A net loss
 produces no tax and does not reduce other income in this tool.
+
 
 We need this because the gain is taxed at the person's marginal rates, not a
 flat rate, and an AI model would otherwise guess the percentage. The inclusion
@@ -16,6 +18,7 @@ gave, but it leaves out the principal residence exemption, the lifetime
 capital gains exemption, loss carry-overs, the alternative minimum tax and
 credits, and the result says so.
 """
+
 
 from backend.calculator import calculate_tax
 from backend.common import caveats, check_amount, finish, get_parameters, get_rules, normalize_province

@@ -102,3 +102,20 @@ Every website we have actually extracted tax information from. Nothing planned o
 - **Code usage:**
   - `backend/reference.py`: `verified_parameters()`, `verify_source()`.
   - `backend/tools.py`: `get_verified_tax_parameters` (topic `tfsa`).
+
+## 11. CRA: T4127 Payroll Deductions Formulas (January 2026, 122nd edition)
+
+- **URL:** https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html
+- **Purpose:** Federal basic personal amount (maximum, minimum and the income range where it phases down), the federal credit rate, and the credit-rate and Manitoba high-income rules.
+- **Stored in:** `data/tax_credits_2026.json` under `federal` and `note`.
+- **Code usage:**
+  - `backend/credits.py`: `tax_after_basic_personal_credit()`, `federal_bpa()`.
+  - `backend/reference.py`: `verify_source()`.
+  - `backend/tools.py`: `calculate_tax_after_basic_personal_credit`.
+
+## 12. CRA: T4032 Payroll Deductions Tables, general information (one page per province or territory)
+
+- **URL pattern:** `https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032{xx}-{jan|july}/t4032{xx}-{january|july}-general-information.html`, where `{xx}` is on, ab, bc, sk, ns, nb, nt, nu, pe, yt or mb. The exact page for each is stored in the JSON file.
+- **Purpose:** The 2026 provincial or territorial basic personal amount. Newfoundland and Labrador and Quebec are not stored because the amount is unclear or the system differs.
+- **Stored in:** `data/tax_credits_2026.json` under `provinces` (`source_url` for each).
+- **Code usage:** same as source 11.

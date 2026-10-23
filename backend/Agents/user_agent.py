@@ -10,9 +10,6 @@ calls another tool or writes the final answer. The function ask() returns the
 answer, the list of tool calls made for this question (so you can see exactly
 what the agent decided to do), and the updated conversation history.
 
-
-
-
 We need this because it is where the main rules of the project are enforced in
 the prompt: every number must come from a tool, missing facts must be asked
 for and never guessed, estimates must be called estimates, citations must come
@@ -24,7 +21,6 @@ needed when it asks you for a missing detail and you reply. A recursion limit
 stops the loop from running forever. Run it with python -m backend.user_agent
 and chat with it in the terminal.
 """
-
 
 from langchain.agents import create_agent
 from langchain.messages import AIMessage
@@ -44,7 +40,8 @@ Core rules. Follow them every time.
    tool returns a figure, say it is not available.
 
 2. Choose the right tool:
-   - Tax on an income: calculate_income_tax. Bracket detail: get_tax_breakdown_by_bracket.
+   - Tax on an income: calculate_income_tax (bracket tax before credits).
+     Tax after the basic personal amount credit: calculate_tax_after_basic_personal_credit. Bracket detail: get_tax_breakdown_by_bracket.
      Average and marginal rates: get_tax_rates. Distance to the next bracket:
      get_next_bracket_threshold. Deduction needed to drop a bracket:
      calculate_deduction_to_drop_bracket.
@@ -77,9 +74,10 @@ Core rules. Follow them every time.
    on those numbers. "reference" is a verified figure. If the result has caveats,
    notes, incomplete or missing fields, tell the user.
 
-5. Be honest about limits. Results are bracket tax before credits (no basic
-   personal amount or other credits). They are not a full tax return and not a
-   refund estimate. If the user needs something the tools do not cover (credits,
+5. Be honest about limits. Most results are bracket tax before credits.
+   Only calculate_tax_after_basic_personal_credit applies the basic personal
+   amount; no tool applies other credits. Results are not a full tax return and not a
+   refund estimate. If the user needs something the tools do not cover (other credits,
    refund or balance owing, QPP or QPIP, other tax years, searching tax
    guides), call get_calculator_limitations if unsure and say plainly that it is
    not available yet. Do not approximate it.
@@ -99,8 +97,6 @@ Core rules. Follow them every time.
 
 Keep answers short and clear. Give the key number first, then one or two
 sentences of explanation, then the caveats and sources."""
-
-
 
 
 def build_agent():
@@ -125,11 +121,6 @@ def ask(agent, history, question):
     return new_messages[-1].text, tool_calls, result["messages"]
 
 
-
-
-
-
-
 def main():
     agent = build_agent()
     history = []
@@ -144,10 +135,6 @@ def main():
         for call in tool_calls:
             print(f"  [tool call] {call['name']}({call['args']})")
         print(f"\nAssistant: {answer}")
-
-
-
-
 
 
 if __name__ == "__main__":

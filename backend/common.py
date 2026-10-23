@@ -1,5 +1,3 @@
-
-
 """
 This file holds the small shared helpers that every other tax module uses, so
 that the logic modules and the tool registry (tools.py) never repeat each
@@ -12,17 +10,15 @@ in a sensible range), turns a city, a province name or a code into the
 two-letter jurisdiction code, and lists the known limits of the calculator.
 
 We need this because the whole project depends on one rule: the AI never does
-tax math and never invents a number. 
-
-Putting validation, province matching and result labelling in one place means every tool behaves
-the same way and an error is always a clear ValueError message that the tool layer turns into an
+tax math and never invents a number. Putting validation, province matching and
+result labelling in one place means every tool behaves the same way and an
+error is always a clear ValueError message that the tool layer turns into an
 {"error": ...} answer. Every result is labelled by finish() with a
 result_type: "calculation" (exact rule-based math), "reference" (a verified
 figure looked up from our files) or "formula_estimate" (a formula applied to
 numbers the user supplied, with stated assumptions), so the agent can say
 honestly which kind of answer it is giving.
 """
-
 
 import json
 import math
@@ -145,11 +141,14 @@ INCLUDED_IN_RESULTS = [
     "Federal and provincial/territorial bracket tax for the 2026 tax year.",
     "CPP, CPP2 and EI amounts outside Quebec, from verified 2026 figures.",
     "RRSP, TFSA and capital gains figures from verified CRA pages.",
+    "The basic personal amount credit (federal and most provinces) in one dedicated tool.",
 ]
 
 NOT_INCLUDED_IN_RESULTS = [
-    "Tax credits of any kind, including the basic personal amount. "
-    "Missing dependency: verified 2026 federal and provincial credit amounts.",
+    "Tax credits other than the basic personal amount (employment amount, CPP/EI, age, "
+    "tuition, medical, donations, etc.). Missing dependency: verified amounts for each credit. "
+    "The basic personal amount is only available in calculate_tax_after_basic_personal_credit, "
+    "and not for Newfoundland and Labrador, Quebec, or Manitoba incomes above 200,000.",
     "Refund or balance-owing estimates. "
     "Missing dependency: tax credits, plus withholding and deduction inputs.",
     "QPP and QPIP (Quebec). Missing dependency: verified Quebec contribution figures.",
@@ -165,10 +164,6 @@ NOT_INCLUDED_IN_RESULTS = [
 ]
 
 
-
-
-
-
 def get_rules():
     if os.environ.get("RULES_SOURCE", "json").strip().lower() == "db":
         from backend.rules_db import load_rules_from_db
@@ -177,17 +172,9 @@ def get_rules():
     return load_rules()
 
 
-
-
-
 def get_parameters():
     with open(PARAMETERS_PATH) as f:
         return json.load(f)
-
-
-
-
-
 
 
 def check_amount(value, label):
